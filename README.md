@@ -9,6 +9,7 @@ Este projeto permite a criação de aplicações em conformidade com o especific
  - [JPA: Java Persistence API](http://docs.oracle.com/javaee/6/tutorial/doc/bnbpz.html)
  - [Hibernate em banco de dados H2](http://hibernate.org/)
  - [Bean Validation](http://beanvalidation.org/)
+ - [Lombok](https://projectlombok.org/)
  - [Primefaces](https://www.primefaces.org/)
  - [Bootstrap Template: AdminLTE.IO](https://adminlte.io/)
  - [Arquillian](http://arquillian.org/)

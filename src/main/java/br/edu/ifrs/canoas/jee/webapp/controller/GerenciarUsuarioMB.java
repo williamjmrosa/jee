@@ -9,9 +9,11 @@ import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
+import lombok.Data;
 
 @Named
 @RequestScoped
+@Data
 public class GerenciarUsuarioMB {
 
 	@Inject
@@ -41,21 +43,6 @@ public class GerenciarUsuarioMB {
 		this.usuario = u;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 	public String limpa() {
 		usuario = new Usuario();
 		return "/public/usuario.jsf?facesRedirect=true";
