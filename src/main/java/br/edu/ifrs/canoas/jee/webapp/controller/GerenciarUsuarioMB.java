@@ -17,28 +17,28 @@ import lombok.Data;
 public class GerenciarUsuarioMB {
 
 	@Inject
-    private GerenciarUsuarioService gerenciarUsuarioService;	
+	private GerenciarUsuarioService gerenciarUsuarioService;
 	@Inject
 	private Usuario usuario;
-	
+
 	private List<Usuario> usuarios;
-		
+
 	public String salva() {
 		gerenciarUsuarioService.salvaUsario(usuario);
 		this.init();
 		return limpa();
 	}
-	
+
 	@PostConstruct
-    public void init() {
-		usuarios = gerenciarUsuarioService.busca(null);	
-    }
-	
+	public void init() {
+		usuarios = gerenciarUsuarioService.busca(null);
+	}
+
 	public void exclui() {
 		gerenciarUsuarioService.exclui(usuario);
 		this.init();
 	}
-	
+
 	public void edita(Usuario u) {
 		this.usuario = u;
 	}
