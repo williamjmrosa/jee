@@ -23,24 +23,24 @@ public class GerenciarUsuarioMB {
 
 	private List<Usuario> usuarios;
 
+	@PostConstruct
+	public void init() {
+		usuarios = gerenciarUsuarioService.busca(null);
+	}
+
 	public String salva() {
 		gerenciarUsuarioService.salvaUsario(usuario);
 		this.init();
 		return limpa();
 	}
 
-	@PostConstruct
-	public void init() {
-		usuarios = gerenciarUsuarioService.busca(null);
+	public void edita(Usuario u) {
+		this.usuario = u;
 	}
 
 	public void exclui() {
 		gerenciarUsuarioService.exclui(usuario);
 		this.init();
-	}
-
-	public void edita(Usuario u) {
-		this.usuario = u;
 	}
 
 	public String limpa() {
