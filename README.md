@@ -16,8 +16,8 @@ Este projeto permite a criação de aplicações em conformidade com o especific
  - [AssertJ](http://joel-costigliola.github.io/assertj/)
  
 ## Referência para Aula JEE (Rodrigo Noll / IFRS Canoas)
- - [JEE](https://aula-java.github.io/aulas/jee/)
+ - [JEE](https://rodrigonoll.github.io/java/jee/)
 
 # Exercício
  - [IF-HOTEL](https://app.moqups.com/rnoll/LI5pmePpl3/view)
-<img src="https://aula-java.github.io/aulas/jpa/img/exerc.png">
+<img src="https://rodrigonoll.github.io/java/jpa/img/exerc.png">
