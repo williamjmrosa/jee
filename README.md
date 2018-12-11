@@ -18,6 +18,7 @@ Este projeto permite a criação de aplicações em conformidade com o especific
 ## Referência para Aula JEE (Rodrigo Noll / IFRS Canoas)
  - [JEE](https://rodrigonoll.github.io/aula/java-jee/)
 
-# Exercício
+<!--# Exercício
  - [IF-HOTEL](https://app.moqups.com/rnoll/LI5pmePpl3/view)
 <img src="https://rodrigonoll.github.io/aula/java-jpa/img/exerc.png">
+-->
