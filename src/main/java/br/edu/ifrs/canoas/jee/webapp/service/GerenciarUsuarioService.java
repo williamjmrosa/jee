@@ -41,6 +41,9 @@ public class GerenciarUsuarioService {
 		if (qtdEmailCadastrado == 0) {
 			if (validaSenha(usuario)){
 				
+				
+				//enderecoDAO.insere(usuario.getEndereco());
+				
 				usuarioDAO.insere(usuario);
 				Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso",usuario.getEmail());
 				log.info("Salvo " + usuario.getNome() + " com id " + usuario.getId());

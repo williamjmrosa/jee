@@ -75,6 +75,41 @@
 								value="#{gerenciarUsuarioMB.usuario.email}" required="true" />
 							<!-- <p:message for="email" errorClass="invalid" /> -->
 						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="cep" value="#{messages['endereco.cep']}" />
+							<p:inputText id="cep" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.cep}" required="true" />
+							<!-- <p:message for="email" errorClass="invalid" /> -->
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="logradouro" value="#{messages['endereco.logradouro']}" />
+							<p:inputText id="logradouro" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.logradouro}" required="true" />
+							<!-- <p:message for="email" errorClass="invalid" /> -->
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="cidade" value="#{messages['endereco.cidade']}" />
+							<p:inputText id="cidade" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.cidade}" required="true" />
+							<!-- <p:message for="email" errorClass="invalid" /> -->
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="estado" value="#{messages['endereco.estado']}" />
+							<p:inputText id="estado" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.estado}" required="true" />
+							<!-- <p:message for="email" errorClass="invalid" /> -->
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="numero" value="#{messages['endereco.numero']}" />
+							<p:inputText id="numero" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.numero}" required="true" />
+							<!-- <p:message for="email" errorClass="invalid" /> -->
+						</div>
 
 						<div class="form-group">
 							<p:outputLabel for="senha" value="#{messages['user.password']}" />
@@ -112,7 +147,9 @@
 							<p:column headerText="Email">
 								<h:outputText value="#{_usr.email}" />
 							</p:column>
-
+							<p:column headerText="Endereco">
+								<h:outputText value="#{_usr.endereco.cidade}" />
+							</p:column>
 							<p:column headerText="Ações">
 								<!-- EDITA -->
 								<h:commandButton value="#{messages['edit']}" immediate="true" styleClass="btn btn-default"
