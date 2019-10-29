@@ -31,9 +31,15 @@ public class GerenciarUsuarioService {
 		log.info("Salvando " + usuario.getNome());
 		
 		if (usuario.getId() != null) {
-			usuarioDAO.atualiza(usuario);
-			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso",usuario.getEmail());
-			return true;
+			if(this.get(usuario.getId()).getSenha() == usuario.getSenha() || validaSenha(usuario)) {
+				usuarioDAO.atualiza(usuario);
+				Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso",usuario.getEmail());
+				return true;
+			}
+			log.info("Senha do Usuario " + usuario.getNome() + " - email " + usuario.getEmail()+" é inválida");
+			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.senha.erro.invalida");
+			return false;
+			
 		}
 		
 		int qtdEmailCadastrado = this.validaEmail(usuario);
@@ -49,6 +55,9 @@ public class GerenciarUsuarioService {
 				log.info("Salvo " + usuario.getNome() + " com id " + usuario.getId());
 				return true;
 			}
+			log.info("Senha do Usuario " + usuario.getNome() + " - email " + usuario.getEmail()+" é inválida");
+			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.senha.erro.invalida");
+			return false;
 		} 
 		
 		log.info("Problema com email duplicado do usuário " + usuario.getNome() + " - email " + usuario.getEmail());
@@ -63,9 +72,10 @@ public class GerenciarUsuarioService {
 	 * @return
 	 */
 	private boolean validaSenha(Usuario usuario) {
-		String senha = this.getSenha(usuario.getSenha());
-		if (senha.length() > 0){
+		
+		if (usuario.getSenha().matches("[A-z0-9]{6,8}")){
 			//atualizar senha criptografada
+			String senha = this.getSenha(usuario.getSenha());
 			usuario.setSenha(senha);	
 			return true;
 		}

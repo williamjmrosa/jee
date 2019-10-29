@@ -21,7 +21,8 @@ import lombok.Data;
 @Entity
 @Data
 public class Usuario extends BaseEntity<Long> implements Serializable {
-
+//@Pattern (regexp = "[A-z0-9]{6,8}", message = "Senha Invalida")
+	
 	private static final long serialVersionUID = 6262524988798723388L;
 
 	@NotNull @Email private String email;
