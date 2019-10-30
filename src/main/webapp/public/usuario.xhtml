@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -112,8 +112,8 @@
 						</div>
 
 						<div class="form-group">
-							<p:outputLabel for="senha" value="#{messages['user.password']}" />
-							<p:password id="senha" styleClass="form-control"
+							<p:outputLabel rendered="#{empty gerenciarUsuarioMB.usuario.id}" for="senha" value="#{messages['user.password']}" />
+							<p:password rendered="#{empty gerenciarUsuarioMB.usuario.id}" id="senha" styleClass="form-control"
 								value="#{gerenciarUsuarioMB.usuario.senha}" required="false">
 							</p:password>
 							<!-- <p:message for="senha" errorClass="invalid" /> -->
@@ -150,7 +150,7 @@
 							<p:column headerText="Endereco">
 								<h:outputText value="#{_usr.endereco.cidade}" />
 							</p:column>
-							<p:column headerText="AÃ§Ãµes">
+							<p:column headerText="Ações">
 								<!-- EDITA -->
 								<h:commandButton value="#{messages['edit']}" immediate="true" styleClass="btn btn-default"
 									action="#{gerenciarUsuarioMB.edita(_usr)}" update="form-usuario" >

@@ -16,75 +16,67 @@ import br.edu.ifrs.canoas.jee.webapp.model.dao.UsuarioDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
-
 @Stateless
 public class GerenciarUsuarioService {
 
 	@Inject
 	private UsuarioDAO usuarioDAO;
-	
+
 	@Inject
 	private Logger log;
 
 	public boolean salvaUsario(Usuario usuario) {
 
 		log.info("Salvando " + usuario.getNome());
-		
+
 		if (usuario.getId() != null) {
-			if(this.get(usuario.getId()).getSenha() == usuario.getSenha() || validaSenha(usuario)) {
-				usuarioDAO.atualiza(usuario);
-				Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso",usuario.getEmail());
-				return true;
-			}
-			log.info("Senha do Usuario " + usuario.getNome() + " - email " + usuario.getEmail()+" é inválida");
-			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.senha.erro.invalida");
-			return false;
-			
+			usuario.setSenha(this.get(usuario.getId()).getSenha());
+			usuarioDAO.atualiza(usuario);
+			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso", usuario.getEmail());
+			return true;
+
 		}
-		
+
 		int qtdEmailCadastrado = this.validaEmail(usuario);
-		
+
 		if (qtdEmailCadastrado == 0) {
-			if (validaSenha(usuario)){
-				
-				
-				//enderecoDAO.insere(usuario.getEndereco());
-				
+			if (validaSenha(usuario)) {
+
 				usuarioDAO.insere(usuario);
-				Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso",usuario.getEmail());
+				Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", usuario.getEmail());
 				log.info("Salvo " + usuario.getNome() + " com id " + usuario.getId());
 				return true;
 			}
-			log.info("Senha do Usuario " + usuario.getNome() + " - email " + usuario.getEmail()+" é inválida");
+			log.info("Senha do Usuario " + usuario.getNome() + " - email " + usuario.getEmail() + " é inválida");
 			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.senha.erro.invalida");
 			return false;
-		} 
-		
+		}
+
 		log.info("Problema com email duplicado do usuário " + usuario.getNome() + " - email " + usuario.getEmail());
-		Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.email.erro.cadastrado",usuario.getEmail());
+		Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.email.erro.cadastrado", usuario.getEmail());
 		return false;
 	}
 
-	
 	/**
 	 * Valida a senha do usuário. Testa o algoritmo de criptografia
+	 * 
 	 * @param usuario
 	 * @return
 	 */
 	private boolean validaSenha(Usuario usuario) {
-		
-		if (usuario.getSenha().matches("[A-z0-9]{6,8}")){
-			//atualizar senha criptografada
-			String senha = this.getSenha(usuario.getSenha());
-			usuario.setSenha(senha);	
+
+		if (usuario.getSenha().matches("[A-z0-9]{6,8}")) {
+			// atualizar senha criptografada
+			
+			usuario.setSenha(this.getSenha(usuario.getSenha()));
 			return true;
 		}
 		return false;
 	}
 
-
 	/**
 	 * retorna a quantidade de e-mails cadastrados no banco iguais ao informado.
+	 * 
 	 * @param usuario
 	 * @return int
 	 */
@@ -92,18 +84,16 @@ public class GerenciarUsuarioService {
 		if (usuario == null || StringUtils.isBlank(usuario.getEmail()))
 			return -1;
 
-		return usuarioDAO
-				.buscaPorEmail(usuario.getEmail().trim().toLowerCase())
-				.size();
+		return usuarioDAO.buscaPorEmail(usuario.getEmail().trim().toLowerCase()).size();
 	}
 
 	public List<Usuario> busca(String criterio) {
-		if (criterio != null && criterio.length() > 0) 
+		if (criterio != null && criterio.length() > 0)
 			return usuarioDAO.buscaPorCriterio(criterio);
 		else
 			return usuarioDAO.lista();
 	}
-	
+
 	private String getSenha(String str) {
 		String result = "";
 		try {
@@ -117,13 +107,11 @@ public class GerenciarUsuarioService {
 		return result;
 	}
 
-
 	public void exclui(Usuario usuario) {
 		usuarioDAO.exclui(usuario.getId());
-		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.excluido.sucesso",usuario.getNome());
+		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.excluido.sucesso", usuario.getNome());
 		log.info("Excluido " + usuario.getNome() + " com id " + usuario.getId());
 	}
-
 
 	public Usuario get(Long id) {
 		return usuarioDAO.busca(id);
