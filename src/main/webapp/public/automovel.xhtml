@@ -91,8 +91,8 @@
 						</div>
 						
 						<div class="form-group">
-							<p:outputLabel for="button" value="Button:" />
-        					<p:calendar id="button" value="#{gerenciarAutomovelMB.automovel.data}" showOn="button" />
+							<p:outputLabel for="data" value="#{messages['automovel.data']}" />
+        					<p:calendar id="data" value="#{gerenciarAutomovelMB.automovel.data}" showOn="button" />
 						</div>
 
 						<p:commandButton value="#{messages['clean']}" 
@@ -130,7 +130,7 @@
 								<h:outputText value="#{_auto.ano}" />
 							</p:column>
 							<p:column headerText="Data">
-								<h:outputText value="#{_auto.DataFormatada}" />
+								<h:outputText value="#{_auto.dataFormatada}" />
 							</p:column>
 							<p:column headerText="Ações">
 								<!-- EDITA -->

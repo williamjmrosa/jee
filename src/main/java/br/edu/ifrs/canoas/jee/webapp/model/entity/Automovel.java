@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -30,7 +31,13 @@ public class Automovel extends BaseEntity<Long> implements Serializable {
 	private Date data;
 	
 	public String getDataFormatada(){
-		return data.toString();
+		String dt;
+		if(data != null) {
+			dt = data.toString().substring(0,10);
+		}else {
+			dt = " ";
+		}
+		return dt;
 		   
 	}
    
