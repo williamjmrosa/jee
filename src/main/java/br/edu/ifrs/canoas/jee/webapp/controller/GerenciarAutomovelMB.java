@@ -7,7 +7,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Automovel;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarAutomovelService;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 import lombok.Data;
 
@@ -17,35 +19,35 @@ import lombok.Data;
 public class GerenciarAutomovelMB {
 
 	@Inject
-	private GerenciarUsuarioService gerenciarUsuarioService;
+	private GerenciarAutomovelService gerenciarAutomovelService;
 	@Inject
-	private Usuario usuario;
-
-	private List<Usuario> usuarios;
-
+	private Automovel automovel;
+	
+	private List<Automovel> automoveis;
+	
 	@PostConstruct
 	public void init() {
-		usuarios = gerenciarUsuarioService.busca(null);
+		automoveis = gerenciarAutomovelService.busca(null);
 	}
-
+	
 	public String salva() {
-		gerenciarUsuarioService.salvaUsario(usuario);
+		gerenciarAutomovelService.salvaAutomovel(automovel);
 		this.init();
 		return limpa();
 	}
-
-	public void edita(Usuario u) {
-		this.usuario = u;
+	
+	public void edita(Automovel a) {
+		this.automovel = a;
 	}
-
+	
 	public void exclui() {
-		gerenciarUsuarioService.exclui(usuario);
+		gerenciarAutomovelService.exclui(automovel);
 		this.init();
 	}
-
+	
 	public String limpa() {
-		usuario = new Usuario();
-		return "/public/usuario.jsf?facesRedirect=true";
+		automovel = new Automovel();
+		return "/public/automovel.jsf?facesRedirect=true";
 	}
 
 }

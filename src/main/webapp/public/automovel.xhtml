@@ -13,14 +13,14 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					<p:outputLabel value="#{messages['menu.title']}" />
-					<small><p:outputLabel value="#{messages['menu.subtitle']}" /></small>
+					<p:outputLabel value="#{messages['menu.title.automovel']}" />
+					<small><p:outputLabel value="#{messages['menu.subtitle.automovel']}" /></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> <p:outputLabel
 								value="#{messages['breadcrumb-1']}" /></a></li>
 					<li class="active"><p:outputLabel
-							value="#{messages['user']}" /></li>
+							value="#{messages['automovel']}" /></li>
 				</ol>
 			</section>
 
@@ -33,7 +33,7 @@
 				<div class="box">
 					<div class="box-header with-border">
 						<h3 class="box-title">
-							<p:outputLabel value="#{messages['user']}" />
+							<p:outputLabel value="#{messages['automovel']}" />
 						</h3>
 
 						<div class="box-tools pull-right">
@@ -52,78 +52,54 @@
 					
 					<div class="box-body" id="form-usuario">
 						
-						<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}" id="hiddenId" />
+						<h:inputHidden value="#{gerenciarAutomovelMB.automovel.id}" id="hiddenId" />
 	
 						<div class="form-group">
-							<p:outputLabel for="nome" value="#{messages['user.name']}" />
-							<p:inputText id="nome" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.nome}" required="true" />
+							<p:outputLabel for="placa" value="#{messages['automovel.placa']}" />
+							<p:inputText id="placa" styleClass="form-control"
+								value="#{gerenciarAutomovelMB.automovel.placa}" required="true" />
 							<!-- <p:message for="nome" /> -->
 						</div>
 
 						<div class="form-group">
-							<p:outputLabel for="sobrenome"
-								value="#{messages['user.lastname']}" />
-							<p:inputText id="sobrenome" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.sobrenome}" required="true" />
+							<p:outputLabel for="modelo"
+								value="#{messages['automovel.modelo']}" />
+							<p:inputText id="modelo" styleClass="form-control"
+								value="#{gerenciarAutomovelMB.automovel.modelo}" required="true" />
 							<!-- <p:message for="sobrenome" errorClass="invalid" /> -->
 						</div>
 
 						<div class="form-group">
-							<p:outputLabel for="email" value="#{messages['user.email']}" />
-							<p:inputText id="email" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.email}" required="true" />
+							<p:outputLabel for="marca" value="#{messages['automovel.marca']}" />
+							<p:inputText id="marca" styleClass="form-control"
+								value="#{gerenciarAutomovelMB.automovel.marca}" required="true" />
 							<!-- <p:message for="email" errorClass="invalid" /> -->
 						</div>
 						
 						<div class="form-group">
-							<p:outputLabel for="cep" value="#{messages['endereco.cep']}" />
-							<p:inputText id="cep" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.endereco.cep}" required="true" />
+							<p:outputLabel for="ano" value="#{messages['automovel.ano']}" />
+							<p:inputText id="ano" styleClass="form-control"
+								value="#{gerenciarAutomovelMB.automovel.ano}" required="true" />
 							<!-- <p:message for="email" errorClass="invalid" /> -->
 						</div>
 						
 						<div class="form-group">
-							<p:outputLabel for="logradouro" value="#{messages['endereco.logradouro']}" />
-							<p:inputText id="logradouro" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.endereco.logradouro}" required="true" />
+							<p:outputLabel for="RENAVAN" value="#{messages['automovel.RENAVAN']}" />
+							<p:inputText id="RENAVAN" styleClass="form-control"
+								value="#{gerenciarAutomovelMB.automovel.RENAVAN}" required="true" />
 							<!-- <p:message for="email" errorClass="invalid" /> -->
 						</div>
 						
 						<div class="form-group">
-							<p:outputLabel for="cidade" value="#{messages['endereco.cidade']}" />
-							<p:inputText id="cidade" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.endereco.cidade}" required="true" />
-							<!-- <p:message for="email" errorClass="invalid" /> -->
-						</div>
-						
-						<div class="form-group">
-							<p:outputLabel for="estado" value="#{messages['endereco.estado']}" />
-							<p:inputText id="estado" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.endereco.estado}" required="true" />
-							<!-- <p:message for="email" errorClass="invalid" /> -->
-						</div>
-						
-						<div class="form-group">
-							<p:outputLabel for="numero" value="#{messages['endereco.numero']}" />
-							<p:inputText id="numero" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.endereco.numero}" required="true" />
-							<!-- <p:message for="email" errorClass="invalid" /> -->
-						</div>
-
-						<div class="form-group">
-							<p:outputLabel rendered="#{empty gerenciarUsuarioMB.usuario.id}" for="senha" value="#{messages['user.password']}" />
-							<p:password rendered="#{empty gerenciarUsuarioMB.usuario.id}" id="senha" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.senha}" required="false">
-							</p:password>
-							<!-- <p:message for="senha" errorClass="invalid" /> -->
+							<p:outputLabel for="button" value="Button:" />
+        					<p:calendar id="button" value="#{gerenciarAutomovelMB.automovel.data}" showOn="button" />
 						</div>
 
 						<p:commandButton value="#{messages['clean']}" 
-						    action="#{gerenciarUsuarioMB.limpa}" styleClass="btn btn-default"
+						    action="#{gerenciarAutomovelMB.limpa}" styleClass="btn btn-default"
 							ajax="false" style="border: none;" immediate="true" />
 							
-						<h:commandButton value="Salvar" action="#{gerenciarUsuarioMB.salva}"
+						<h:commandButton value="Salvar" action="#{gerenciarAutomovelMB.salva}"
 							styleClass="btn btn-primary pull-right">
 							
 						</h:commandButton>
@@ -131,36 +107,43 @@
 					
 					<div class="box-footer">
 
-						<h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
-							<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
+						<h:panelGroup rendered="#{empty gerenciarAutomovelMB.automoveis}">
+							<em><p:outputLabel value="#{messages['automovel.empty']}" />.</em>
 						</h:panelGroup>
 						
 						
-						<p:dataTable var="_usr" value="#{gerenciarUsuarioMB.usuarios}" id="tb-usuarios"
-							rendered="#{not empty gerenciarUsuarioMB.usuarios}">
-							<p:column headerText="Nome">
-								<h:outputText value="#{_usr.nome}" />
+						<p:dataTable var="_auto" value="#{gerenciarAutomovelMB.automoveis}" id="tb-usuarios"
+							rendered="#{not empty gerenciarAutomovelMB.automoveis}">
+							<p:column headerText="Placa">
+								<h:outputText value="#{_auto.placa}" />
 							</p:column>
-							<p:column headerText="Sobrenome">
-								<h:outputText value="#{_usr.sobrenome}" />
+							<p:column headerText="Marca">
+								<h:outputText value="#{_auto.marca}" />
 							</p:column>
-							<p:column headerText="Email">
-								<h:outputText value="#{_usr.email}" />
+							<p:column headerText="Modelo">
+								<h:outputText value="#{_auto.modelo}" />
 							</p:column>
-							<p:column headerText="Endereco">
-								<h:outputText value="#{_usr.endereco.cidade}" />
+							<p:column headerText="RENAVAN">
+								<h:outputText value="#{_auto.RENAVAN}" />
+							</p:column>
+							<p:column headerText="Ano">
+								<h:outputText value="#{_auto.ano}" />
+							</p:column>
+							<p:column headerText="Data">
+								<h:outputText value="#{_auto.DataFormatada}" />
 							</p:column>
 							<p:column headerText="Ações">
 								<!-- EDITA -->
+								
 								<h:commandButton value="#{messages['edit']}" immediate="true" styleClass="btn btn-default"
-									action="#{gerenciarUsuarioMB.edita(_usr)}" update="form-usuario" >
+									action="#{gerenciarAutomovelMB.edita(_auto)}" update="form-usuario" >
 									<p:ajax update=":mainForm:user-content" />
 								</h:commandButton>
 				 				<!-- EXCLUI -->
 								<h:commandLink value="#{messages['delete']}" immediate="true" styleClass="btn btn-default"
-									action="#{gerenciarUsuarioMB.exclui}" ajax="true" update="tb-usuarios">									
-									<f:setPropertyActionListener value="#{_usr}"
-										target="#{gerenciarUsuarioMB.usuario}" />
+									action="#{gerenciarAutomovelMB.exclui}" ajax="true" update="tb-usuarios">									
+									<f:setPropertyActionListener value="#{_auto}"
+										target="#{gerenciarAutomovelMB.automovel}" />
 								</h:commandLink>
 							</p:column>
 						</p:dataTable>
